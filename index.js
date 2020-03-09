@@ -34,3 +34,99 @@
         // Indicamos que cada 5 segundos cambie la imagen
         setInterval(rotarImagenes,2000);
     } 
+
+    var boton1 = document.getElementById("boton1");
+    boton1.addEventListener('mouseout', CambioColor); //evento ocurre al alejarse el mouse del boton
+
+    function CambioColor(){
+        
+            boton1.style.backgroundColor = "white";
+            boton1.style.color = "blue";
+            boton1.style.fontWeight = "bold";
+            console.log("se aleja del raton") 
+            //return boton1.style.backgroundColor;  
+
+            if (boton2.style.backgroundColor === "red"){
+
+                boton2.style.backgroundColor = "black";
+                boton2.style.color = "blue";
+                
+    
+            }
+         
+    }
+
+    var boton2 = document.getElementById("boton2"); //evento ocurre al hacer click en boton
+    boton2.addEventListener('click', CambioColor1);
+
+    function CambioColor1(){
+
+        boton2.style.backgroundColor= "red";
+        boton2.style.color = "blue";
+
+        //boton1.style.color = "green";
+        //boton1.style.backgroundColor = "dark";
+        
+        console.log("click raton")
+
+        if (boton1.style.backgroundColor === "white"){
+
+            boton1.style.backgroundColor = "black";
+            boton1.style.color = "snow";
+            boton1.style.fontWeight = "lighter";
+
+        }
+    }
+
+    // todo esto se usa para leer un archivo externo
+    var contenido = document.querySelector('#contenido')
+    function traer(){
+        fetch('texto.txt')
+        .then(data => data.text()) //transformamos el dato en formato que se pueda leer
+        .then(data=>{  // ya data tiene el txt en un formato que se puede leer
+            console.log(data)
+        })
+    }
+
+    // todo esto se usa para leer un archivo externo
+   // var contenido = document.querySelector('#contenido') // querySelector Devuelve el primer elemento del documento
+    //function traer(){
+    //    fetch('texto.txt')
+      //  .then(data => data.text()) //transformamos el dato en formato que se pueda leer
+        //.then(data=>{  // ya data tiene el txt en un formato que se puede leer
+         //   console.log(data)
+       // })
+   // }
+
+    // todo esto se usa para leer api publico
+   var contenido = document.querySelector('#contenido')
+    function traer(){
+        fetch('https://randomuser.me/api/')
+        .then(res => res.json()) //transformamos el dato en formato que se pueda leer
+        .then(data => {  // ya data tiene el txt en un formato que se puede leer
+            console.log(data.results['0'])
+            contenido.innerHTML = ` <img src="${data.results['0'].picture.large}" width="100px" class="img-fluid rounded-circle" >
+            <p >
+            Name: ${data.results['0'].name.first} 
+            
+            </p>
+            <p >
+            Last Name: ${data.results['0'].name.last} 
+            </p>
+
+            <p >
+            Coutry: ${data.results['0'].location.country} 
+            </p>
+
+            `
+        })
+    }
+
+
+   // var myElement = document.getElementById("boton1");
+    //myElement.innerHTML = "Cambio";
+    //myElement.innerHTML = "Boton";
+
+   
+
+    
