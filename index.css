@@ -25,6 +25,7 @@ img {
     
     
 }
+
 .text{ /* Clase para texto */
     font-style: oblique;
     text-rendering: geometricPrecision;
@@ -35,7 +36,7 @@ img {
 
 }
 .fondo{ /* fondo del cuerpo */
-    background-color: darkslategrey;
+    background-color: rgb(25, 39, 39);
     image-rendering: auto;
     
 }
@@ -46,6 +47,7 @@ img {
     text-align: justify;
     font-variant: small-caps;
     color: snow;
+    text-align: center;
 }
 .figure {
     max-width: 100%;

@@ -43,10 +43,10 @@
             boton1.style.backgroundColor = "white";
             boton1.style.color = "blue";
             boton1.style.fontWeight = "bold";
-            console.log("se aleja del raton") 
+            console.log("se aleja del raton") ;
             //return boton1.style.backgroundColor;  
 
-            if (boton2.style.backgroundColor === "red"){
+            if (boton2.style.backgroundColor === "grey"){
 
                 boton2.style.backgroundColor = "black";
                 boton2.style.color = "blue";
@@ -61,13 +61,11 @@
 
     function CambioColor1(){
 
-        boton2.style.backgroundColor= "red";
-        boton2.style.color = "blue";
+        boton2.style.backgroundColor= "grey";
+        boton2.style.color = "white";
 
-        //boton1.style.color = "green";
-        //boton1.style.backgroundColor = "dark";
         
-        console.log("click raton")
+        console.log("click raton");
 
         if (boton1.style.backgroundColor === "white"){
 
@@ -116,9 +114,7 @@
 
             <p >
             Coutry: ${data.results['0'].location.country} 
-            </p>
-
-            `
+            </p> `
         })
     }
 
