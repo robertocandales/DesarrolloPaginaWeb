@@ -118,6 +118,14 @@
         })
     }
 
+    // Uso de localStorage
+    // SET => Guardando
+    // GET => Obtener
+
+    const nombre = 'Roberto';
+    localStorage.setItem('nombreUsuario',nombre); // a nombreUsuario le pasamos la variable nombre
+
+
 
    // var myElement = document.getElementById("boton1");
     //myElement.innerHTML = "Cambio";
@@ -125,4 +133,3 @@
 
    
 
-    

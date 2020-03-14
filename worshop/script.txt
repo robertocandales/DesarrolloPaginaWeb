@@ -1,0 +1,142 @@
+
+
+
+    
+const formularioUI = document.getElementById('formulario');
+const formularioUI1 = document.getElementById('formulario1');
+const formularioUI2 = document.getElementById('formulario2');
+const alumno = document.getElementById('alumno'); // para mostrar
+const alumnoDni = document.getElementById('alumnoDni'); // para mostrar
+const nombre = document.getElementById('nombre'); // para obtener del INPUT
+const dni = document.getElementById('dni'); // para obtener del INPUT
+const listaDeActividades = document.getElementById('listaDeActividades');
+const botonEliminar = document.getElementById('eliminar');
+const botonAgregar = document.getElementById('agregar');
+
+
+
+//console.log(alumno);
+let = arrayDe = []; //array de objetos
+
+    
+   // FUNCIONES
+function eliminar(){
+     let eliminarDni = document.getElementById('eliminarDni').value;
+     let indice;
+     let eliminado;
+     //console.log(eliminarDni)
+    
+     formularioUI1.reset();
+
+
+     arrayDe.forEach(function(element, indexArray){
+          //console.log(element.dni);
+          if(element.dni === eliminarDni){
+              // console.log('eliminar2');
+               indice = indexArray; // contener la osicion del vector
+              // console.log(indice);  
+              eliminado = element.dni;  
+          }
+          
+     });
+
+     if(eliminado === eliminarDni){
+          arrayDe.splice(indice,1);
+          GuardarDB();
+     }
+    
+}
+   
+   
+const CrearItem = (nombre, dni) => {
+     let = item = { //objetos
+          nombre: nombre,
+          dni: dni              
+     }
+
+     arrayDe.push(item); // colocar los objetos al final del array
+
+     return item;
+     
+}
+
+const GuardarDB = () => {
+    
+     localStorage.setItem('key', JSON.stringify(arrayDe)); // JSON.stringify(arrayDe)) para llevarlo a texto pero en formato JSON
+     LeerLS();
+}
+
+const LeerLS = () => {
+    
+     listaDeActividades.innerHTML = ''; // para limpiar el div donde se encuetra los id para mostrar alumno y
+   
+     arrayDe = JSON.parse(localStorage.getItem('key'));
+     //console.log(arrayDe);
+
+     if(arrayDe === null){
+          arrayDe = [];
+     }else{
+
+          arrayDe.forEach(element => { // ciclo for
+              //console.log(element.nombre);
+              //console.log(element.dni);
+               
+               if(element.nombre){
+                   
+                    listaDeActividades.innerHTML += `<h3 id="alumno"> Nombre: ${element.nombre}</h3> <b id="alumnoDni">  DNI ${element.dni}</b>`; //string literales 
+                    
+               }else {
+                    listaDeActividades.innerHTML += `<b id="alumnoDni">  DNI: ${element.DNI}</b>`;
+               }    
+          });
+      }     
+}
+
+
+     botonAgregar.addEventListener('click', (evento) => {
+
+          
+          
+          evento.preventDefault(); // para que no refresque la pagina
+          let nombre = document.getElementById('nombre').value;  // .value para capturar el valor del input
+          let dni = document.getElementById('dni').value;
+          let botonAgregar = document.getElementById('agregar');
+
+
+     // alumno.textContent = nombre;
+     // alumnoDni.textContent = DNI;
+
+          CrearItem(nombre, dni); // mandar ambas variables a la funcion
+          //CrearItem(dni);
+          GuardarDB();
+          
+          //formularioUI.reset();
+          //formularioUI1.reset();
+          formularioUI2.reset();
+          
+          //botonAgregar.disabled = true;
+
+          });
+     
+     
+
+     
+document.addEventListener('DOMContentLoaded', LeerLS);
+
+
+
+botonEliminar.addEventListener('click', eliminar);
+          
+
+/*
+if (nombre.value !== ""){
+     console.log(nombre.value);
+     console.log("hola");
+
+     botonAgregar.disabled = false;
+}
+*/
+   
+
+
+     
